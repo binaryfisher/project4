@@ -1,0 +1,107 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button, .attribute{
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+  width: 140px;
+  height: 50px;
+  font-weight: 500;
+  color: white;
+  font-family: inherit;
+  background-color:#04AA6D ;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.api-panel{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 8px;
+}
+
+button:hover, .attribute:hover{
+  background-color: hsl(158, 95%, 24%);
+  
+ }
+
+ .read-the-docs {
+  color: #888;
+}
+.image-container{
+  width: 400px;
+  height: 400px;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 5px 2px 2px 2px  grey ;
+
+}
+
+.attributes-panel{
+  display: flex;
+  gap: 30px;
+}
+
+.attribute{
+ width: 260px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+ 
+}
