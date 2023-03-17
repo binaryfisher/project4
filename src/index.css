@@ -49,16 +49,14 @@ body {
 }
 .gallery, .ban-list{
   display: grid; 
- 
+  
   grid-template-rows: 1fr 9fr;
   justify-content: center;
   align-items: center;
  
 }
-.gallery{
-  
-}
-.gallery-container{
+
+.gallery-container, .ban-list-container{
   
   display: flex;
   flex-direction: column;
@@ -69,6 +67,22 @@ body {
   background-color: rgb(216, 205, 205);
   overflow-y: auto;
   gap: 10px;
+  padding-top: 5px;
+  
+}
+.ban-list-container{
+
+ font-size: 15px;
+ font-weight: 600;
+ 
+}
+.list-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+ 
+  
 }
 
 h1 {

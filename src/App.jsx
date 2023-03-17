@@ -17,6 +17,7 @@ function App() {
   });
 
   const [preCats, setPreCats] = useState([]);
+  const [banList, setBanList] = useState([]);
   
   const callAPI = async (query) => {
     const response = await fetch(query);
@@ -48,13 +49,20 @@ function App() {
     e.preventDefault();
   }
 
+  const handleAddBanList = (e) =>{
+     let value = e.target.innerHTML;
+     if(value && !banList.includes(value)){
+      setBanList(oldList =>[...oldList, value])
+     }
+  }
+
   return (
     <div className="App">
       
       
           <Gallery preCats={preCats}/>
-          <APIPanel result={result} handleBtnClick={handleBtnClick}/>
-          <BanList/>
+          <APIPanel result={result} handleBtnClick={handleBtnClick} handleAddBanList={handleAddBanList}/>
+          <BanList banList={banList}/>
          
 
      

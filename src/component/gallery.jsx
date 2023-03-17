@@ -8,7 +8,7 @@ const Gallery = ({preCats}) =>{
             {preCats && preCats.length > 0 ? (
         
                 preCats.map((dog, index) => (
-                    <div className="gallery-card" >
+                    <div className="gallery-card" key={index}>
                     <img
                         className="gallery-img"
                         src={dog.img}
