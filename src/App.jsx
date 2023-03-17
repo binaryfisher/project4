@@ -1,40 +1,46 @@
-import { useState } from 'react'
-import APIPanel from './component/apiPanel'
-import './App.css'
-const ACCESS_KEY = import.meta.env.APP_ACCESS_KEY;
+import { useState } from 'react';
+import APIPanel from './component/apiPanel';
+import BanList from './component/banList';
+import Gallery from './component/gallery';
+import './App.css';
+const ACCESS_KEY = import.meta.env.VITE_APP_ACCESS_KEY;
+
 
 function App() {
 
   const [result, setResult] = useState({
-    dated: "Unknown",
-    culture: "Unknown",
-    division: "Unknown",
+    name: "",
+    weight: "",
+    breed_group: "",
+    life_span:"",
     img: ""
   });
+
+  const [preCats, setPreCats] = useState([]);
   
   const callAPI = async (query) => {
     const response = await fetch(query);
-    const json = await response.json();
+    let json = await response.json();
+   
     if(json){
-      setResult({
-        dated: json.records[0].dated,
-        culture:json.records[0].culture,
-        division: json.records[0].division,
-        img: json.records[0].primaryimageurl
-      });
+      let cat = {
+        name: json[0].breeds[0].name,
+        weight:json[0].breeds[0].weight.imperial + " lbs",
+        origin: json[0].breeds[0].origin ,
+        life_span:json[0].breeds[0].life_span + " years",
+        img: json[0].url
+      }
+      setResult(cat);
+      setPreCats(oldArray => [...oldArray, cat])
     }
   };
 
   const makeQuery = () => {
-    let size = 1;
-    let totalRecords = 243296;
-    let width = 400;
-    let height = 400;
-    let page = Math.floor(Math.random() * totalRecords / size)
-
-    let query = `https://api.harvardartmuseums.org/object?apikey=488798f3-8a01-452c-a440-dd37bfa5664f&size=${size}&page=${page}`
-
-    callAPI(query).catch(console.error);
+    
+      let query = `https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&api_key=${ACCESS_KEY}`
+  
+      callAPI(query).catch();   
+    
   }
 
   const handleBtnClick = (e) =>{
@@ -45,8 +51,15 @@ function App() {
   return (
     <div className="App">
       
+      
+          <Gallery preCats={preCats}/>
+          <APIPanel result={result} handleBtnClick={handleBtnClick}/>
+          <BanList/>
+         
 
-    <APIPanel result={result} handleBtnClick={handleBtnClick}/>
+     
+
+    
 
     </div>
   )
