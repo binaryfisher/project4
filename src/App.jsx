@@ -13,7 +13,7 @@ function App() {
     weight: "",
     breed_group: "",
     life_span:"",
-    img: ""
+    img:""
   });
 
   const [preCats, setPreCats] = useState([]);

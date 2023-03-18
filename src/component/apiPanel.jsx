@@ -10,7 +10,7 @@ const APIPanel = ({result, handleBtnClick, handleAddBanList}) => {
                 <div className="attribute" onClick={handleAddBanList}>{result.origin}</div>
                 <div className="attribute" onClick={handleAddBanList}>{result.life_span}</div>
             </div>
-            <div className="image-container"><img src={result.img}  /></div>
+            <div className="image-container"><img src={result.img} alt="Click Discover button to explore cats!" /></div>
             <button onClick={handleBtnClick}>Discover</button>
         </div>
     )
