@@ -20,10 +20,10 @@ function App() {
   const [banList, setBanList] = useState([]);
   
   const callAPI = async (query) => {
-    const response = await fetch(query);
-    let json = await response.json();
+
+      let response = await fetch(query);
+      let json = await response.json();
    
-    if(json){
       let cat = {
         name: json[0].breeds[0].name,
         weight:json[0].breeds[0].weight.imperial,
@@ -31,16 +31,25 @@ function App() {
         life_span:json[0].breeds[0].life_span,
         img: json[0].url
       }
-      setResult(cat);
-      setPreCats(oldArray => [...oldArray, cat])
-    }
+      if(banList.includes (json[0].breeds[0].name) || banList.includes (json[0].breeds[0].weight.imperial) || banList.includes (json[0].breeds[0].origin) ||banList.includes (json[0].breeds[0].life_span)){
+        callAPI(query)
+      }else{
+        setResult(cat);
+        setPreCats(oldArray => [...oldArray, cat])
+      }
+
+     
+     
+    
   };
 
   const makeQuery = () => {
     
       let query = `https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1&api_key=${ACCESS_KEY}`
   
-      callAPI(query).catch();   
+      callAPI(query);  
+    
+     
     
   }
 
