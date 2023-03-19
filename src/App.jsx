@@ -26,9 +26,9 @@ function App() {
     if(json){
       let cat = {
         name: json[0].breeds[0].name,
-        weight:json[0].breeds[0].weight.imperial + " lbs",
+        weight:json[0].breeds[0].weight.imperial,
         origin: json[0].breeds[0].origin ,
-        life_span:json[0].breeds[0].life_span + " years",
+        life_span:json[0].breeds[0].life_span,
         img: json[0].url
       }
       setResult(cat);
